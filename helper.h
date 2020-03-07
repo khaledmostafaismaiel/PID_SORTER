@@ -18,8 +18,11 @@
 
 
 #define MAX_SIZE 255
-
+#define SORT_BY_KPS 1
+#define SORT_BY_DIFF 2
 
 int get_file_name_choise(void);
 
 int get_process_choise(void);
+
+int get_sorting_type(void);

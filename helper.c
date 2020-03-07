@@ -58,3 +58,28 @@ int get_process_choise(){
 
     return choise_num;
 }
+
+
+int get_sorting_type(){
+    char choise[MAX_SIZE] ;
+    int  choise_num ;
+
+    do{
+        puts("1 to sort by KPs\n");
+        puts("2 to sort by diff betwwen (gyero_end and gyro_star) \n");
+
+
+        scanf("%s",choise);
+
+        choise_num = atoi(choise);
+
+        if((choise_num <= 0) || (choise_num > 2)){
+            
+            puts(ANSI_COLOR_RED Bold"\t\t\t\t\t INVALID CHOISE"ANSI_COLOR_RESET);
+
+        }
+
+        }while((choise_num <= 0) || (choise_num > 2));
+
+    return choise_num ;
+}

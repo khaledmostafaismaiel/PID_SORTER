@@ -52,4 +52,4 @@ int insertToLinkedList(char *file_name);
 
 int show_linked_list(node * my_node);
 
-int bubble_sort_linked_list(node *my_node);
+int bubble_sort_linked_list(node *my_node,int sorting_type);

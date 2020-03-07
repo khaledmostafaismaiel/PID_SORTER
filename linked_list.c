@@ -293,14 +293,21 @@ int show_linked_list(node * my_node){
 }
 
 
-int bubble_sort_linked_list(node *my_node){
+int bubble_sort_linked_list(node *my_node,int sorting_type){
 
     if(my_node == NULL){
         puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "your desired linked list is empty.\a" ANSI_COLOR_RESET);
         return 0;
 
     }else{
+        switch(sorting_type){
+            case SORT_BY_KPS :
 
+            case SORT_BY_DIFF :      
+
+            default :   ;
+                        break;
+        }
 
     }
     
