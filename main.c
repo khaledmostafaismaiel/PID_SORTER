@@ -96,7 +96,7 @@ int main(){
 
                         }
 
-                            pointer_to_file = fopen(file_name, "w");
+                            pointer_to_file = fopen(file_name, "a");
 
                                 if (pointer_to_file != NULL)
                                 {
@@ -173,7 +173,7 @@ int main(){
                                                  
                                 }                                    
                             }else{
-                                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "Linked list is empty.\a" ANSI_COLOR_RESET);
+                                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "No such file in this directory.\a" ANSI_COLOR_RESET);
 
                             }                             
             

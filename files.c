@@ -55,6 +55,8 @@ int get_data_from_files(node * my_node ,char *file_name)
         return 1 ;
 
     }else{
+      
+      puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "No such file in this directory.\a" ANSI_COLOR_RESET);
 
       return 1 ;
     
