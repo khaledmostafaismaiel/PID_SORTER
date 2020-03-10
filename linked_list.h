@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "helper.h"
-
+#include "files.h"
 
 typedef struct node
 {
@@ -16,7 +16,7 @@ typedef struct node
 } node;
 
 
-node *new_node = NULL;
+node *temp_node = NULL;
 
 node *move_forward_head_node = NULL;
 node *move_forward_current_node = NULL;
@@ -47,9 +47,16 @@ node *move_left_diagonal_down_current_node = NULL;
 
 int ask_for_data(node * my_node);
 
-
-int insertToLinkedList(char *file_name);
+int insertToLinkedList(char *file_name,int data_source);
 
 int show_linked_list(node * my_node);
 
 int bubble_sort_linked_list(node *my_node,int sorting_type);
+
+int write_data_in_file(node * my_node,char *file_name);
+
+void swap(node *my_node,node *my_node_neigheour);
+
+
+
+
