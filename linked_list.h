@@ -53,8 +53,6 @@ int show_linked_list(char *file_name);
 
 int bubble_sort_linked_list(node *my_node,int sorting_type);
 
-int write_data_in_file(char *file_name,float kp,float gyro_start,float gyro_end);
-
 void swap(node *my_node,node *my_node_neigheour);
 
 

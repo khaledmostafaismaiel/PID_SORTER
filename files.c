@@ -4,11 +4,10 @@
 int get_data_from_files(char *file_name)
 {
 
-  char singleline[100];
+
+  char kp_string[MAX_SIZE] = "NULL", gyro_start_string[MAX_SIZE] = "NULL", gyro_end_string[MAX_SIZE] = "NULL";
 
   FILE *pointer_to_file;
-
-  char kp_string[MAX_SIZE] = "empty_file!", gyro_start_string[MAX_SIZE] = "\n", gyro_end_string[MAX_SIZE] = "\n";
 
   pointer_to_file = fopen(file_name, "r");
 
@@ -20,15 +19,6 @@ int get_data_from_files(char *file_name)
         fscanf(pointer_to_file, "%[^;]", kp_string);
         fseek(pointer_to_file, 1, SEEK_CUR);
 
-        // Check the idstring has overwritten from file or not
-        if (strcmp(kp_string, "empty_file!") == 0)
-        {
-          // if idstring has not overwritten, then the file contains only a new line.
-            return 0 ;
-
-        }else{
-
-        }
 
         fscanf(pointer_to_file, "%[^;]", gyro_start_string);
         fseek(pointer_to_file, 1, SEEK_CUR);
@@ -54,5 +44,46 @@ int get_data_from_files(char *file_name)
     }
 
 
+
+}
+
+
+int write_data_in_file(char *file_name,float kp,float gyro_start,float gyro_end){
+
+    FILE *pointer_to_file ;
+
+    pointer_to_file = fopen(file_name,"r");
+
+    if (pointer_to_file != "NULL"){
+
+      fclose(pointer_to_file);
+
+      pointer_to_file = fopen(file_name , "a");                                      
+      fprintf(pointer_to_file, "\n%f;%f;%f", kp,gyro_start,gyro_end);
+      fclose(pointer_to_file);
+      return 1 ;
+
+    }else{
+      fclose(pointer_to_file);
+
+      pointer_to_file = fopen(file_name , "a");                                      
+      fprintf(pointer_to_file, "%f;%f;%f", kp,gyro_start,gyro_end);
+      fclose(pointer_to_file);
+      return 1 ;    
+    }
+
+}
+
+int is_file_exist(char *file_name){
+
+  FILE *pointer_to_file ;
+
+  pointer_to_file = fopen(file_name , "r");
+
+  if(pointer_to_file != "NULL"){
+    return 1 ;
+  }else{
+    return 0 ;
+  }
 
 }

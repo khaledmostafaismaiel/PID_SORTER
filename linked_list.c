@@ -12,7 +12,6 @@ int get_data_from_user(char *file_name){
     puts("Please enter gyro_start");
     scanf("%s",gyro_start);
 
-
     char gyro_end[MAX_SIZE];
     puts("Please enter gyro_end");
     scanf("%s",gyro_end);
@@ -65,7 +64,7 @@ int insertToLinkedList(char *file_name , float kp,float gyro_start ,float gyro_e
             new_node->gyro_start = gyro_start ;
             new_node->gyro_end = gyro_end ;    
             new_node->next = NULL;
-                        move_forward_current_node->next = new_node;
+            move_forward_current_node->next = new_node;
             move_forward_current_node = new_node ;
                 
         }
@@ -80,15 +79,16 @@ int insertToLinkedList(char *file_name , float kp,float gyro_start ,float gyro_e
             new_node->gyro_start = gyro_start ;
             new_node->gyro_end = gyro_end ;    
             new_node->next = NULL;
-                        move_backward_current_node = new_node;
+            move_backward_current_node = new_node;
 
         }else{
-            new_node->next = NULL;
+            
             new_node->KP = kp;
             new_node->gyro_start = gyro_start ;
             new_node->gyro_end = gyro_end ;    
             new_node->next = NULL;
-                        move_backward_current_node = new_node ;
+            move_backward_current_node->next = new_node ;
+            move_backward_current_node = new_node ;
 
         }
 
@@ -103,7 +103,7 @@ int insertToLinkedList(char *file_name , float kp,float gyro_start ,float gyro_e
             new_node->gyro_start = gyro_start ;
             new_node->gyro_end = gyro_end ;    
             new_node->next = NULL;
-                                move_right_side_current_node = new_node;
+            move_right_side_current_node = new_node;
 
 
         }else{
@@ -112,8 +112,8 @@ int insertToLinkedList(char *file_name , float kp,float gyro_start ,float gyro_e
             new_node->gyro_start = gyro_start ;
             new_node->gyro_end = gyro_end ;    
             new_node->next = NULL;
-                    move_right_side_current_node->next = new_node;
-                    move_right_side_current_node = new_node ;
+            move_right_side_current_node->next = new_node;
+            move_right_side_current_node = new_node ;
                     
 
         }
@@ -130,7 +130,7 @@ int insertToLinkedList(char *file_name , float kp,float gyro_start ,float gyro_e
             new_node->gyro_start = gyro_start ;
             new_node->gyro_end = gyro_end ;    
             new_node->next = NULL;
-                                move_left_side_current_node = new_node;
+            move_left_side_current_node = new_node;
   
 
         }else{
@@ -139,8 +139,8 @@ int insertToLinkedList(char *file_name , float kp,float gyro_start ,float gyro_e
             new_node->gyro_start = gyro_start ;
             new_node->gyro_end = gyro_end ;    
             new_node->next = NULL;
-                                move_left_side_current_node->next = new_node;
-                    move_left_side_current_node = new_node ;
+            move_left_side_current_node->next = new_node;
+            move_left_side_current_node = new_node ;
 
         }
         
@@ -156,7 +156,7 @@ int insertToLinkedList(char *file_name , float kp,float gyro_start ,float gyro_e
             new_node->gyro_start = gyro_start ;
             new_node->gyro_end = gyro_end ;    
             new_node->next = NULL;
-                                move_right_diagonal_up_current_node = new_node;
+            move_right_diagonal_up_current_node = new_node;
 
 
 
@@ -167,8 +167,8 @@ int insertToLinkedList(char *file_name , float kp,float gyro_start ,float gyro_e
             new_node->gyro_start = gyro_start ;
             new_node->gyro_end = gyro_end ;    
             new_node->next = NULL;
-                                move_right_diagonal_up_current_node->next = new_node;
-                    move_right_diagonal_up_current_node = new_node ;
+            move_right_diagonal_up_current_node->next = new_node;
+            move_right_diagonal_up_current_node = new_node ;
 
 
         }
@@ -185,7 +185,7 @@ int insertToLinkedList(char *file_name , float kp,float gyro_start ,float gyro_e
             new_node->gyro_start = gyro_start ;
             new_node->gyro_end = gyro_end ;    
             new_node->next = NULL;
-                                move_right_diagonal_down_current_node = new_node;
+            move_right_diagonal_down_current_node = new_node;
 
 
         }else{
@@ -195,8 +195,8 @@ int insertToLinkedList(char *file_name , float kp,float gyro_start ,float gyro_e
             new_node->gyro_start = gyro_start ;
             new_node->gyro_end = gyro_end ;    
             new_node->next = NULL;
-                                move_right_diagonal_down_current_node->next = new_node;
-                    move_right_diagonal_down_current_node = new_node ;
+            move_right_diagonal_down_current_node->next = new_node;
+            move_right_diagonal_down_current_node = new_node ;
  
 
 
@@ -215,7 +215,7 @@ int insertToLinkedList(char *file_name , float kp,float gyro_start ,float gyro_e
             new_node->gyro_start = gyro_start ;
             new_node->gyro_end = gyro_end ;    
             new_node->next = NULL;
-                                move_left_diagonal_up_current_node = new_node;
+            move_left_diagonal_up_current_node = new_node;
 
 
 
@@ -225,12 +225,8 @@ int insertToLinkedList(char *file_name , float kp,float gyro_start ,float gyro_e
             new_node->gyro_start = gyro_start ;
             new_node->gyro_end = gyro_end ;    
             new_node->next = NULL;
-                                move_left_diagonal_up_current_node->next = new_node;
-                    move_left_diagonal_up_current_node = new_node ;
-
-
-
-
+            move_left_diagonal_up_current_node->next = new_node;
+            move_left_diagonal_up_current_node = new_node ;
 
         }
 
@@ -240,16 +236,11 @@ int insertToLinkedList(char *file_name , float kp,float gyro_start ,float gyro_e
         {
 
             move_left_diagonal_down_head_node = new_node;
-
-
             new_node->KP = kp;
             new_node->gyro_start = gyro_start ;
             new_node->gyro_end = gyro_end ;    
             new_node->next = NULL;
-                                move_left_diagonal_down_current_node = new_node;
-
-
-
+             move_left_diagonal_down_current_node = new_node;
 
         }else{
 
@@ -258,9 +249,8 @@ int insertToLinkedList(char *file_name , float kp,float gyro_start ,float gyro_e
             new_node->gyro_start = gyro_start ;
             new_node->gyro_end = gyro_end ;    
             new_node->next = NULL;
-                                move_left_diagonal_down_current_node->next = new_node;
-                    move_left_diagonal_down_current_node = new_node ;
-
+            move_left_diagonal_down_current_node->next = new_node;
+            move_left_diagonal_down_current_node = new_node ;
 
         }
 
@@ -320,16 +310,16 @@ int show_linked_list(char *file_name){
 
     }else{
 
-    while(temp_node != NULL){
+        while(temp_node != NULL){
 
-        printf("KP = %f\t\t",temp_node->KP);
-        printf("Gyro_start = %f\t\t",temp_node->gyro_start);
-        printf("Gyro_end = %f\t\t",temp_node->gyro_end);
-        printf("diff = %f\n\n",(temp_node->gyro_end) - (temp_node->gyro_start));
+            printf("KP = %.3f\t\t",temp_node->KP);
+            printf("Gyro_start = %.3f\t\t",temp_node->gyro_start);
+            printf("Gyro_end = %.3f\t\t",temp_node->gyro_end);
+            printf("diff = %.3f\n\n",(temp_node->gyro_end) - (temp_node->gyro_start));
 
-        temp_node = temp_node->next;
+            temp_node = temp_node->next;
 
-    }
+        }
     
         return 1;
     }
@@ -451,27 +441,4 @@ int swapCondition(node *my_node,int type_of_sorting)
   
 
 }
-
-
-
-int write_data_in_file(char *file_name,float kp,float gyro_start,float gyro_end){
-
-    FILE *pointer_to_file ;
-
-    pointer_to_file = fopen(file_name, "a");
-
-    if (pointer_to_file != NULL){
-                                            
-        fprintf(pointer_to_file, "%f;%f;%f\n", kp,gyro_start,gyro_end);
-    
-        fclose(pointer_to_file);
-
-        return 1 ;
-
-    }else{
-        return 0 ;
-    }
-
-}
-
 
