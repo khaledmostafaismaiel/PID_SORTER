@@ -51,7 +51,7 @@ int insertToLinkedList(char *file_name , float kp,float gyro_start ,float gyro_e
 
 int show_linked_list(char *file_name);
 
-int bubble_sort_linked_list(node *my_node,int sorting_type);
+int bubble_sort_linked_list(char*file_name,int sorting_type);
 
 void swap(node *my_node,node *my_node_neigheour);
 

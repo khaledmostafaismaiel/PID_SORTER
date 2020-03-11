@@ -47,6 +47,46 @@ int get_data_from_files(char *file_name)
 
 }
 
+void get_last_sections_data(){
+
+    char file_name[MAX_SIZE] ;
+
+    for(int i=1 ; i <=8 ; ++i){
+        
+        switch(i){
+
+                case 1:     strcpy (file_name,"move_forward_kp.txt");
+                        break ;
+
+                case 2:     strcpy (file_name,"move_backward_kp.txt");
+                        break ;
+                
+                case 3:     strcpy (file_name,"move_right_side_kp.txt");
+                        break ;
+
+                case 4:     strcpy (file_name,"move_left_side_kp.txt");
+                        break ;
+
+
+                case 5:     strcpy (file_name,"move_right_diagonal_up_kp.txt");
+                        break ;
+
+                case 6:     strcpy (file_name,"move_right_diagonal_down_kp.txt");
+                        break ;
+
+                case 7:     strcpy (file_name,"move_left_diagonal_up_kp.txt");
+                        break ;
+
+                case 8:     strcpy (file_name,"move_left_diagonal_down_kp.txt");
+                        break ;
+       
+        }
+
+            get_data_from_files(file_name);                    
+        
+    }
+
+}
 
 int write_data_in_file(char *file_name,float kp,float gyro_start,float gyro_end){
 

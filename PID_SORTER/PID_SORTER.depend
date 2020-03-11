@@ -1,11 +1,12 @@
 # depslib dependency file v1.0
-1583915443 source:u:\ftc\pid\main.c
+1583916243 source:u:\ftc\pid\main.c
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
 	"helper.c"
 	"linked_list.c"
 	"files.c"
+	"app.c"
 
 1583912189 u:\ftc\pid\helper.c
 	"helper.h"
@@ -21,9 +22,14 @@
 	"helper.h"
 	"files.h"
 
-1583910976 u:\ftc\pid\files.h
+1583916633 u:\ftc\pid\files.h
 	"helper.h"
 
-1583915038 u:\ftc\pid\files.c
+1583916726 u:\ftc\pid\files.c
 	"files.h"
+
+1583916637 u:\ftc\pid\app.c
+	"app.h"
+
+1583916215 u:\ftc\pid\app.h
 

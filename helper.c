@@ -68,7 +68,7 @@ int get_sorting_type(){
     do{
         puts("1 to sort by KPs");
         puts("2 to sort by diff betwwen (gyero_end and gyro_star)");
-        puts("3 to return to main menu\n");
+        puts("3 to back\n");
 
 
         scanf("%s",choise);

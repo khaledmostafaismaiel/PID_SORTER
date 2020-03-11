@@ -82,7 +82,7 @@ int insertToLinkedList(char *file_name , float kp,float gyro_start ,float gyro_e
             move_backward_current_node = new_node;
 
         }else{
-            
+
             new_node->KP = kp;
             new_node->gyro_start = gyro_start ;
             new_node->gyro_end = gyro_end ;    
@@ -328,67 +328,6 @@ int show_linked_list(char *file_name){
 }
 
 
-int bubble_sort_linked_list(node *my_node,int sorting_type){
-    
-    
-
-    if(my_node == NULL){
-        puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "your desired linked list is empty.\a" ANSI_COLOR_RESET);
-        return 0;
-    }else{
-        int swapped = 1 ;
-
-        switch(sorting_type){
-
-            case SORT_BY_KPS :  do{
-                                     
-                                    while (my_node->next != NULL)
-                                    {
-                                        if(swapCondition(my_node,SORT_BY_KPS)){
-                                            my_node = my_node->next;
-
-                                        }else{
-                                            swapped = 0;
-                                            my_node = my_node->next;
-
-                                        }
-                                        
-                                        
-                                    }    
-
-                                }while (swapped);
-
-                                break ;
-
-            case SORT_BY_DIFF :     do{
-                                     
-                                    while (my_node->next != NULL)
-                                    {
-                                        if(swapCondition(my_node,SORT_BY_DIFF)){
-                                            my_node = my_node->next;
-
-                                        }else{
-                                            swapped = 0;
-                                            my_node = my_node->next;
-
-                                        }
-                                        
-                                    }    
-
-                                }while (swapped);      
-
-                                break ;
-
-            default :           ;
-                        break;
-
-        }
-
-    }
-
-}  
-
-
 void swap(node *my_node,node *my_node_neigheour)
 {
   double temp =0;
@@ -409,7 +348,7 @@ void swap(node *my_node,node *my_node_neigheour)
 
  }
 
-
+ 
 
 int swapCondition(node *my_node,int type_of_sorting)
 {
@@ -441,4 +380,110 @@ int swapCondition(node *my_node,int type_of_sorting)
   
 
 }
+
+
+int bubble_sort_linked_list(char *file_name,int sorting_type){
+    
+
+
+    node *temp_node  ;
+
+
+    if(strcmp(file_name,"move_forward_kp.txt") == 0){
+        temp_node = move_forward_head_node ;
+
+
+    }else if(strcmp(file_name,"move_backward_kp.txt") == 0){
+        temp_node = move_backward_head_node ;
+
+
+    }else if(strcmp(file_name,"move_right_side_kp.txt") == 0){
+        temp_node = move_right_side_head_node ;
+
+        
+    }else if(strcmp(file_name,"move_left_side_kp.txt") == 0){
+        temp_node = move_left_side_head_node ;
+
+        
+    }else if(strcmp(file_name,"move_right_diagonal_up_kp.txt") == 0){
+        temp_node = move_right_diagonal_up_head_node ;
+
+    }else if(strcmp(file_name,"move_right_diagonal_down_kp.txt") == 0){
+        temp_node = move_right_diagonal_down_head_node ;
+
+
+    }else if(strcmp(file_name,"move_left_diagonal_up_kp.txt") == 0){
+        temp_node = move_left_diagonal_up_head_node ;
+
+
+    }else if(strcmp(file_name,"move_left_diagonal_down_kp.txt") == 0){
+        temp_node = move_left_diagonal_down_head_node ;
+
+
+    }
+
+
+
+    if(temp_node == NULL){
+        puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "your desired linked list is empty.\a" ANSI_COLOR_RESET);
+        return 0;
+    }else{
+
+        int swapped = 1 ;
+
+        switch(sorting_type){
+
+            case SORT_BY_KPS :  do{
+                                     
+                                    while (temp_node->next != NULL)
+                                    {
+                                        if(swapCondition(temp_node,SORT_BY_KPS)){
+                                            temp_node = temp_node->next;
+
+                                        }else{
+                                            swapped = 0;
+                                            temp_node = temp_node->next;
+
+                                        }
+                                        
+                                        
+                                    }    
+
+                                }while (swapped);
+
+                                break ;
+
+            case SORT_BY_DIFF :     do{
+                                     
+                                        while (temp_node->next != NULL)
+                                        {
+                                            if(swapCondition(temp_node,SORT_BY_DIFF)){
+                                                temp_node = temp_node->next;
+
+                                            }else{
+                                                swapped = 0;
+                                                temp_node = temp_node->next;
+
+                                            }
+                                            
+                                        }    
+
+                                    }while (swapped);      
+
+                                break ;
+
+            default :           ;
+                        break;
+
+        }
+
+    }
+
+}  
+
+
+
+
+
+
 
