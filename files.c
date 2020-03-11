@@ -1,7 +1,7 @@
 #include "files.h"
 
 
-int get_data_from_files(node * my_node ,char *file_name)
+int get_data_from_files(char *file_name)
 {
 
   char singleline[100];
@@ -18,6 +18,7 @@ int get_data_from_files(node * my_node ,char *file_name)
     {
 
         fscanf(pointer_to_file, "%[^;]", kp_string);
+        fseek(pointer_to_file, 1, SEEK_CUR);
 
         // Check the idstring has overwritten from file or not
         if (strcmp(kp_string, "empty_file!") == 0)
@@ -27,26 +28,16 @@ int get_data_from_files(node * my_node ,char *file_name)
 
         }else{
 
-            my_node->KP = atof(kp_string);
         }
 
-        fseek(pointer_to_file, 1, SEEK_CUR);
-
-    
         fscanf(pointer_to_file, "%[^;]", gyro_start_string);
-
-        my_node->gyro_start = atof(gyro_start_string);
-    
-
         fseek(pointer_to_file, 1, SEEK_CUR);
 
     
         fscanf(pointer_to_file, "%[^\n]", gyro_end_string);
-    
-        my_node->gyro_end = atof(gyro_end_string);
-
       
-        
+        insertToLinkedList(file_name,atof(kp_string),atof(gyro_start_string),atof(gyro_end_string));
+
       
       }
 

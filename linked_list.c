@@ -2,32 +2,40 @@
 
 
 
-int get_data_from_user(node * my_node){
+int get_data_from_user(char *file_name){
 
-    char answer[MAX_SIZE];
-
+    char kp[MAX_SIZE];
     puts("Please enter Kp");
-    scanf("%s",answer);
-    my_node->KP = atof(answer);
+    scanf("%s",kp);
 
-
+    char gyro_start[MAX_SIZE];
     puts("Please enter gyro_start");
-    scanf("%s",answer);
-    my_node->gyro_start = atof(answer);
+    scanf("%s",gyro_start);
 
 
+    char gyro_end[MAX_SIZE];
     puts("Please enter gyro_end");
-    scanf("%s",answer);
-    my_node->gyro_end = atof(answer);
+    scanf("%s",gyro_end);
 
+    if(insertToLinkedList(file_name,atof(kp),atof(gyro_start),atof(gyro_end))){
 
-     return 1 ;
+        if(write_data_in_file(file_name,atof(kp),atof(gyro_start),atof(gyro_end))){
+            
+            return 1 ;
+        }else{
+            return 0 ;
+        }
+    
+    }else{
+
+        return 0 ;
+
+    }
+
 }
 
 
-
-
-int insertToLinkedList(char *file_name , int data_source)
+int insertToLinkedList(char *file_name , float kp,float gyro_start ,float gyro_end)
 {
  
     node * new_node = (node *)malloc(sizeof(node));
@@ -35,7 +43,7 @@ int insertToLinkedList(char *file_name , int data_source)
     if (new_node == NULL)
     {
         puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "HEAP IS UNDERFLOW CAN'T CREAT COMMAND LINKED LIST.\a" ANSI_COLOR_RESET);
-        exit(0);
+        return 0 ;
     }
 
     
@@ -45,56 +53,21 @@ int insertToLinkedList(char *file_name , int data_source)
         {
 
             move_forward_head_node = new_node;
-            
-            if(data_source == READ_FROM_USER){
-
-                if(get_data_from_user(new_node)){
-                    new_node->next = NULL;
-                    move_forward_current_node = new_node;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-                }
-
-            }else{
-
-                if(get_data_from_files(new_node,file_name)){
-                    new_node->next = NULL;
-                    move_forward_current_node = new_node;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-                }
-
-            }
-
+            new_node->KP = kp;
+            new_node->gyro_start = gyro_start ;
+            new_node->gyro_end = gyro_end ;    
+            new_node->next = NULL;
+            move_forward_current_node = new_node;
 
         }else{
 
-            if(data_source == READ_FROM_USER){
-
-                if(get_data_from_user(new_node)){
-                    new_node->next = NULL;
-                    move_forward_current_node->next = new_node;
-                    move_forward_current_node = new_node ;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-
-                }
-
-            }else{
-
-                if(get_data_from_files(new_node,file_name)){
-                    new_node->next = NULL;
-                    move_forward_current_node->next = new_node;
-                    move_forward_current_node = new_node ;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-
-                }
-
-            }
-
-
-
+            new_node->KP = kp;
+            new_node->gyro_start = gyro_start ;
+            new_node->gyro_end = gyro_end ;    
+            new_node->next = NULL;
+                        move_forward_current_node->next = new_node;
+            move_forward_current_node = new_node ;
+                
         }
 
     }else if(strcmp(file_name,"move_backward_kp.txt") == 0){
@@ -103,56 +76,19 @@ int insertToLinkedList(char *file_name , int data_source)
         {
 
             move_backward_head_node = new_node;
-
-            if(data_source == READ_FROM_USER){
-
-                if(get_data_from_user(new_node)){
-                    new_node->next = NULL;
-                    move_backward_current_node = new_node;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-                }
-
-            }else{
-
-                if(get_data_from_files(new_node,file_name)){
-                    new_node->next = NULL;
-                    move_backward_current_node = new_node;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-                }
-
-            }
-
+            new_node->KP = kp;
+            new_node->gyro_start = gyro_start ;
+            new_node->gyro_end = gyro_end ;    
+            new_node->next = NULL;
+                        move_backward_current_node = new_node;
 
         }else{
-
-            if(data_source == READ_FROM_USER){
-                if(get_data_from_user(new_node)){
-                    new_node->next = NULL;
-                    move_backward_current_node->next = new_node;
-                    move_backward_current_node = new_node ;
-
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-
-                }
-
-            }else{
-
-                if(get_data_from_files(new_node,file_name)){
-                    new_node->next = NULL;
-                    move_backward_current_node->next = new_node;
-                    move_backward_current_node = new_node ;
-
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-
-                }
-
-            }
-
-
+            new_node->next = NULL;
+            new_node->KP = kp;
+            new_node->gyro_start = gyro_start ;
+            new_node->gyro_end = gyro_end ;    
+            new_node->next = NULL;
+                        move_backward_current_node = new_node ;
 
         }
 
@@ -163,59 +99,22 @@ int insertToLinkedList(char *file_name , int data_source)
 
             move_right_side_head_node = new_node;
 
-            if(data_source == READ_FROM_USER){
-
-                if(get_data_from_user(new_node)){
-                    new_node->next = NULL;
-                    move_right_side_current_node = new_node;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-                }
-
-            }else{
-
-                if(get_data_from_files(new_node,file_name)){
-                    new_node->next = NULL;
-                    move_right_side_current_node = new_node;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-                }
-
-            }
+            new_node->KP = kp;
+            new_node->gyro_start = gyro_start ;
+            new_node->gyro_end = gyro_end ;    
+            new_node->next = NULL;
+                                move_right_side_current_node = new_node;
 
 
         }else{
 
-            if(data_source == READ_FROM_USER){
-
-
-                if(get_data_from_user(new_node)){
-                    new_node->next = NULL;
+            new_node->KP = kp;
+            new_node->gyro_start = gyro_start ;
+            new_node->gyro_end = gyro_end ;    
+            new_node->next = NULL;
                     move_right_side_current_node->next = new_node;
                     move_right_side_current_node = new_node ;
                     
-                    }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-
-                }
-
-
-            }else{
-
-                if(get_data_from_files(new_node,file_name)){
-                    new_node->next = NULL;
-                    move_right_side_current_node->next = new_node;
-                    move_right_side_current_node = new_node ;
-                    
-                    }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-
-                }
-                
-            }
-
-
-
 
         }
         
@@ -226,54 +125,22 @@ int insertToLinkedList(char *file_name , int data_source)
 
             move_left_side_head_node = new_node;
 
-            if(data_source == READ_FROM_USER){
 
-                if(get_data_from_user(new_node)){
-                    new_node->next = NULL;
-                    move_left_side_current_node = new_node;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-                }
-
-            }else{
-
-                if(get_data_from_files(new_node,file_name)){
-                    new_node->next = NULL;
-                    move_left_side_current_node = new_node;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-                }
-                
-            }
+            new_node->KP = kp;
+            new_node->gyro_start = gyro_start ;
+            new_node->gyro_end = gyro_end ;    
+            new_node->next = NULL;
+                                move_left_side_current_node = new_node;
+  
 
         }else{
 
-            if(data_source == READ_FROM_USER){
-
-                if(get_data_from_user(new_node)){
-                    new_node->next = NULL;
-                    move_left_side_current_node->next = new_node;
+            new_node->KP = kp;
+            new_node->gyro_start = gyro_start ;
+            new_node->gyro_end = gyro_end ;    
+            new_node->next = NULL;
+                                move_left_side_current_node->next = new_node;
                     move_left_side_current_node = new_node ;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-
-                }
-
-            }else{
-                if(get_data_from_files(new_node,file_name)){
-                    new_node->next = NULL;
-                    move_left_side_current_node->next = new_node;
-                    move_left_side_current_node = new_node ;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-
-                }
-                
-            }
-
-
-
-
 
         }
         
@@ -284,52 +151,25 @@ int insertToLinkedList(char *file_name , int data_source)
 
             move_right_diagonal_up_head_node = new_node;
 
-            if(data_source == READ_FROM_USER){
+  
+            new_node->KP = kp;
+            new_node->gyro_start = gyro_start ;
+            new_node->gyro_end = gyro_end ;    
+            new_node->next = NULL;
+                                move_right_diagonal_up_current_node = new_node;
 
-                if(get_data_from_user(new_node)){
-                    new_node->next = NULL;
-                    move_right_diagonal_up_current_node = new_node;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-                }
-
-            }else{
-
-                if(get_data_from_files(new_node,file_name)){
-                    new_node->next = NULL;
-                    move_right_diagonal_up_current_node = new_node;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-                }
-                
-            }
 
 
         }else{
 
-            if(data_source == READ_FROM_USER){
-
-                if(get_data_from_user(new_node)){
-                    new_node->next = NULL;
-                    move_right_diagonal_up_current_node->next = new_node;
+    
+            new_node->KP = kp;
+            new_node->gyro_start = gyro_start ;
+            new_node->gyro_end = gyro_end ;    
+            new_node->next = NULL;
+                                move_right_diagonal_up_current_node->next = new_node;
                     move_right_diagonal_up_current_node = new_node ;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
 
-                }
-
-            }else{
-
-                if(get_data_from_files(new_node,file_name)){
-                    new_node->next = NULL;
-                    move_right_diagonal_up_current_node->next = new_node;
-                    move_right_diagonal_up_current_node = new_node ;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-
-                }
-
-            }
 
         }
 
@@ -340,52 +180,24 @@ int insertToLinkedList(char *file_name , int data_source)
 
             move_right_diagonal_down_head_node = new_node;
 
-            if(data_source == READ_FROM_USER){
 
-                if(get_data_from_user(new_node)){
-                    new_node->next = NULL;
-                    move_right_diagonal_down_current_node = new_node;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-                }
+            new_node->KP = kp;
+            new_node->gyro_start = gyro_start ;
+            new_node->gyro_end = gyro_end ;    
+            new_node->next = NULL;
+                                move_right_diagonal_down_current_node = new_node;
 
-            }else{
-
-                if(get_data_from_files(new_node,file_name)){
-                    new_node->next = NULL;
-                    move_right_diagonal_down_current_node = new_node;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-                }
-
-                
-            }
 
         }else{
 
-            if(data_source == READ_FROM_USER){
 
-                if(get_data_from_user(new_node)){
-                    new_node->next = NULL;
-                    move_right_diagonal_down_current_node->next = new_node;
+            new_node->KP = kp;
+            new_node->gyro_start = gyro_start ;
+            new_node->gyro_end = gyro_end ;    
+            new_node->next = NULL;
+                                move_right_diagonal_down_current_node->next = new_node;
                     move_right_diagonal_down_current_node = new_node ;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-
-                }
-
-            }else{
-
-                if(get_data_from_files(new_node,file_name)){
-                    new_node->next = NULL;
-                    move_right_diagonal_down_current_node->next = new_node;
-                    move_right_diagonal_down_current_node = new_node ;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-
-                }
-                
-            }
+ 
 
 
         }
@@ -398,52 +210,24 @@ int insertToLinkedList(char *file_name , int data_source)
 
             move_left_diagonal_up_head_node = new_node;
             
-            if(data_source == READ_FROM_USER){
+ 
+            new_node->KP = kp;
+            new_node->gyro_start = gyro_start ;
+            new_node->gyro_end = gyro_end ;    
+            new_node->next = NULL;
+                                move_left_diagonal_up_current_node = new_node;
 
-                if(get_data_from_user(new_node)){
-                    new_node->next = NULL;
-                    move_left_diagonal_up_current_node = new_node;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-                }
-
-            }else{
-
-                if(get_data_from_files(new_node,file_name)){
-                    new_node->next = NULL;
-                    move_left_diagonal_up_current_node = new_node;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-                }
-                
-            }
 
 
         }else{
 
-            if(data_source == READ_FROM_USER){
-
-                if(get_data_from_user(new_node)){
-                    new_node->next = NULL;
-                    move_left_diagonal_up_current_node->next = new_node;
+            new_node->KP = kp;
+            new_node->gyro_start = gyro_start ;
+            new_node->gyro_end = gyro_end ;    
+            new_node->next = NULL;
+                                move_left_diagonal_up_current_node->next = new_node;
                     move_left_diagonal_up_current_node = new_node ;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
 
-                }
-
-            }else{
-
-                if(get_data_from_files(new_node,file_name)){
-                    new_node->next = NULL;
-                    move_left_diagonal_up_current_node->next = new_node;
-                    move_left_diagonal_up_current_node = new_node ;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-
-                }
-                
-            }
 
 
 
@@ -457,53 +241,26 @@ int insertToLinkedList(char *file_name , int data_source)
 
             move_left_diagonal_down_head_node = new_node;
 
-            if(data_source == READ_FROM_USER){
 
-                if(get_data_from_user(new_node)){
-                    new_node->next = NULL;
-                    move_left_diagonal_down_current_node = new_node;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-                }
+            new_node->KP = kp;
+            new_node->gyro_start = gyro_start ;
+            new_node->gyro_end = gyro_end ;    
+            new_node->next = NULL;
+                                move_left_diagonal_down_current_node = new_node;
 
-            }else{
-
-                if(get_data_from_files(new_node,file_name)){
-                    new_node->next = NULL;
-                    move_left_diagonal_down_current_node = new_node;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-                }
-                
-            }
 
 
 
         }else{
 
-            if(data_source == READ_FROM_USER){
-
-                if(get_data_from_user(new_node)){
-                    new_node->next = NULL;
-                    move_left_diagonal_down_current_node->next = new_node;
+  
+            new_node->KP = kp;
+            new_node->gyro_start = gyro_start ;
+            new_node->gyro_end = gyro_end ;    
+            new_node->next = NULL;
+                                move_left_diagonal_down_current_node->next = new_node;
                     move_left_diagonal_down_current_node = new_node ;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
 
-                }
-
-            }else{
-
-                if(get_data_from_files(new_node,file_name)){
-                    new_node->next = NULL;
-                    move_left_diagonal_down_current_node->next = new_node;
-                    move_left_diagonal_down_current_node = new_node ;
-                }else{
-                    puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "cant get_data_from_user from user.\a" ANSI_COLOR_RESET);
-
-                }
-                    
-            }
 
         }
 
@@ -513,38 +270,65 @@ int insertToLinkedList(char *file_name , int data_source)
 
     }
 
-    if(data_source == READ_FROM_USER){
-
-        if(write_data_in_file(new_node,file_name)){
-            return 1;
-        }else{
-             return 0 ;
-        }
-    }else{
-
-        return 1 ;
-
-    }
-
-
+    return 1 ;
 }
 
-int show_linked_list(node * my_node){
+int show_linked_list(char *file_name){
 
-    if(my_node == NULL){
+
+    node *temp_node  ;
+
+
+    if(strcmp(file_name,"move_forward_kp.txt") == 0){
+        temp_node = move_forward_head_node ;
+
+
+    }else if(strcmp(file_name,"move_backward_kp.txt") == 0){
+        temp_node = move_backward_head_node ;
+
+
+    }else if(strcmp(file_name,"move_right_side_kp.txt") == 0){
+        temp_node = move_right_side_head_node ;
+
+        
+    }else if(strcmp(file_name,"move_left_side_kp.txt") == 0){
+        temp_node = move_left_side_head_node ;
+
+        
+    }else if(strcmp(file_name,"move_right_diagonal_up_kp.txt") == 0){
+        temp_node = move_right_diagonal_up_head_node ;
+
+    }else if(strcmp(file_name,"move_right_diagonal_down_kp.txt") == 0){
+        temp_node = move_right_diagonal_down_head_node ;
+
+
+    }else if(strcmp(file_name,"move_left_diagonal_up_kp.txt") == 0){
+        temp_node = move_left_diagonal_up_head_node ;
+
+
+    }else if(strcmp(file_name,"move_left_diagonal_down_kp.txt") == 0){
+        temp_node = move_left_diagonal_down_head_node ;
+
+
+    }
+
+
+
+    if(temp_node == NULL){
         puts(ANSI_COLOR_RED Bold "ERORR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "your desired linked list is empty.\a" ANSI_COLOR_RESET);
         return 0;
 
     }else{
 
-    while(my_node != NULL){
+    while(temp_node != NULL){
 
-        printf("KP = %f\t\t",my_node->KP);
-        printf("Gyro_start = %f\t\t",my_node->gyro_start);
-        printf("Gyro_end = %f\t\t",my_node->gyro_end);
-        printf("diff = %f\n\n",(my_node->gyro_end) - (my_node->gyro_start));
+        printf("KP = %f\t\t",temp_node->KP);
+        printf("Gyro_start = %f\t\t",temp_node->gyro_start);
+        printf("Gyro_end = %f\t\t",temp_node->gyro_end);
+        printf("diff = %f\n\n",(temp_node->gyro_end) - (temp_node->gyro_start));
 
-        my_node = my_node->next;
+        temp_node = temp_node->next;
+
     }
     
         return 1;
@@ -670,15 +454,15 @@ int swapCondition(node *my_node,int type_of_sorting)
 
 
 
-int write_data_in_file(node * my_node,char *file_name){
+int write_data_in_file(char *file_name,float kp,float gyro_start,float gyro_end){
 
     FILE *pointer_to_file ;
 
-    pointer_to_file = fopen(file_name, "w");
+    pointer_to_file = fopen(file_name, "a");
 
     if (pointer_to_file != NULL){
                                             
-        fprintf(pointer_to_file, "%f;%f;%f\n", my_node->KP, my_node->gyro_start, my_node->gyro_end);
+        fprintf(pointer_to_file, "%f;%f;%f\n", kp,gyro_start,gyro_end);
     
         fclose(pointer_to_file);
 
