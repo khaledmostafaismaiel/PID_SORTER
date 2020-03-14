@@ -85,3 +85,17 @@ int get_sorting_type(){
 
     return choise_num ;
 }
+
+
+int is_number(char *string){
+
+    for(int i=0 ;string[i] != NULL ; ++i){
+        if((string[i] <= 9 )) {
+
+        }else{
+            return 0 ;
+        }
+    }
+
+    return 1;
+}

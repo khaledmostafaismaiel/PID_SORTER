@@ -8,9 +8,10 @@
 #include "files.c"
 #include "app.c" 
 
+
 int main(){
 
-        run();
+    run();
 
     return 0 ;
 

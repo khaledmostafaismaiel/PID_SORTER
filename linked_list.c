@@ -429,46 +429,44 @@ int bubble_sort_linked_list(char *file_name,int sorting_type){
         return 0;
     }else{
 
-        int swapped = 1 ;
+        int number_of_nodes = 0 ;
+        node *temp_2 = temp_node ;
+        node *temp_3 = temp_node ;
+
+        while(temp_2 != NULL){
+            temp_2 = temp_2->next ;
+            number_of_nodes++ ;
+        }
 
         switch(sorting_type){
 
-            case SORT_BY_KPS :  do{
-                                     
+            case SORT_BY_KPS :  for(int i=1 ; i <= number_of_nodes ; ++ i){
+                                    temp_node = temp_3 ;
+
                                     while (temp_node->next != NULL)
                                     {
-                                        if(swapCondition(temp_node,SORT_BY_KPS)){
-                                            temp_node = temp_node->next;
-
-                                        }else{
-                                            swapped = 0;
-                                            temp_node = temp_node->next;
-
-                                        }
-                                        
-                                        
+                                        swapCondition(temp_node,SORT_BY_KPS) ;
+                                        temp_node = temp_node->next;
                                     }    
 
-                                }while (swapped);
+                                }
 
                                 break ;
 
-            case SORT_BY_DIFF :     do{
-                                     
+            case SORT_BY_DIFF :     for(int i=1 ; i <= number_of_nodes ; ++ i){
+                                        
+                                        temp_node = temp_3 ;
+
                                         while (temp_node->next != NULL)
                                         {
-                                            if(swapCondition(temp_node,SORT_BY_DIFF)){
-                                                temp_node = temp_node->next;
 
-                                            }else{
-                                                swapped = 0;
-                                                temp_node = temp_node->next;
+                                            swapCondition(temp_node,SORT_BY_DIFF) ;
 
-                                            }
-                                            
+                                            temp_node = temp_node->next;
+
                                         }    
 
-                                    }while (swapped);      
+                                    }    
 
                                 break ;
 

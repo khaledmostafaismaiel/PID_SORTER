@@ -27,3 +27,4 @@ int get_process_choise(void);
 
 int get_sorting_type(void);
 
+int is_number(char *string);
