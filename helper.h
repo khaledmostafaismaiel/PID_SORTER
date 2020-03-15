@@ -21,6 +21,20 @@
 #define SORT_BY_KPS 1
 #define SORT_BY_DIFF 2
 
+#define MOVE_FORWARD_KP_TXT 1
+#define MOVE_BACKWARD_KP_TXT 2
+#define MOVE_RIGHT_SIDE_KP_TXT 3
+#define MOVE_LEFT_SIDE_KP_TXT 4
+#define MOVE_RIGHT_DIAGONAL_UP_KP_TXT 5
+#define MOVE_RIGHT_DIAGONAL_DOWN_KP_TXT 6
+#define MOVE_LEFT_DIAGONAL_UP_KP_TXT 7
+#define MOVE_LEFT_DIAGONAL_DOWN_KP_TXT 8
+
+#define CHOOSE_TO_INSERT_NEW_KP 1
+#define CHOOSE_TO_SHOW_KPS 2
+#define CHOOSE_TO_SORT 3
+#define CHOOSE_TO_EXIT 4
+
 int get_file_name_choise(void);
 
 int get_process_choise(void);

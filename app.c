@@ -24,31 +24,30 @@ void run(){
    
         switch(get_process_choise()){
 
-                case 1: switch(get_file_name_choise()){
+                case CHOOSE_TO_INSERT_NEW_KP : switch(get_file_name_choise()){
 
-                            case 1: strcpy (file_name,"move_forward_kp.txt");
+                            case MOVE_FORWARD_KP_TXT : strcpy (file_name,"move_forward_kp.txt");
                                     break ;
 
-                            case 2: strcpy (file_name,"move_backward_kp.txt");
+                            case MOVE_BACKWARD_KP_TXT: strcpy (file_name,"move_backward_kp.txt");
                                     break ;
                 
-                            case 3: strcpy (file_name,"move_right_side_kp.txt");
+                            case MOVE_RIGHT_SIDE_KP_TXT: strcpy (file_name,"move_right_side_kp.txt");
                                     break ;
 
-                            case 4: strcpy (file_name,"move_left_side_kp.txt");
+                            case MOVE_LEFT_SIDE_KP_TXT: strcpy (file_name,"move_left_side_kp.txt");
                                     break ;
 
-
-                            case 5: strcpy (file_name,"move_right_diagonal_up_kp.txt");
+                            case MOVE_RIGHT_DIAGONAL_UP_KP_TXT: strcpy (file_name,"move_right_diagonal_up_kp.txt");
                                     break ;
 
-                            case 6: strcpy (file_name,"move_right_diagonal_down_kp.txt");
+                            case MOVE_RIGHT_DIAGONAL_DOWN_KP_TXT: strcpy (file_name,"move_right_diagonal_down_kp.txt");
                                     break ;
 
-                            case 7: strcpy (file_name,"move_left_diagonal_up_kp.txt");
+                            case MOVE_LEFT_DIAGONAL_UP_KP_TXT: strcpy (file_name,"move_left_diagonal_up_kp.txt");
                                     break ;
 
-                            case 8: strcpy (file_name,"move_left_diagonal_down_kp.txt");
+                            case MOVE_LEFT_DIAGONAL_DOWN_KP_TXT: strcpy (file_name,"move_left_diagonal_down_kp.txt");
                                     break ;
 
                             default :    do_operation = 0 ;      
@@ -73,31 +72,30 @@ void run(){
                         break;
 
 
-            case 2:     switch(get_file_name_choise()){
+            case CHOOSE_TO_SHOW_KPS:     switch(get_file_name_choise()){
                             
-                            case 1: strcpy (file_name,"move_forward_kp.txt");                                        
+                            case MOVE_FORWARD_KP_TXT: strcpy (file_name,"move_forward_kp.txt");                                        
                                     break ;
 
-                            case 2: strcpy (file_name,"move_backward_kp.txt");
+                            case MOVE_BACKWARD_KP_TXT: strcpy (file_name,"move_backward_kp.txt");
                                     break ;
                 
-                            case 3: strcpy (file_name,"move_right_side_kp.txt");
+                            case MOVE_RIGHT_SIDE_KP_TXT: strcpy (file_name,"move_right_side_kp.txt");
                                     break ;
 
-                            case 4: strcpy (file_name,"move_left_side_kp.txt");
+                            case MOVE_LEFT_SIDE_KP_TXT: strcpy (file_name,"move_left_side_kp.txt");
                                     break ;
 
-
-                            case 5: strcpy (file_name,"move_right_diagonal_up_kp.txt");    
+                            case MOVE_RIGHT_DIAGONAL_UP_KP_TXT: strcpy (file_name,"move_right_diagonal_up_kp.txt");    
                                     break ;
 
-                            case 6: strcpy (file_name,"move_right_diagonal_down_kp.txt");    
+                            case MOVE_RIGHT_DIAGONAL_DOWN_KP_TXT: strcpy (file_name,"move_right_diagonal_down_kp.txt");    
                                     break ;
 
-                            case 7: strcpy (file_name,"move_left_diagonal_up_kp.txt");    
+                            case MOVE_LEFT_DIAGONAL_UP_KP_TXT: strcpy (file_name,"move_left_diagonal_up_kp.txt");    
                                     break ;
 
-                            case 8: strcpy (file_name,"move_left_diagonal_down_kp.txt");
+                            case MOVE_LEFT_DIAGONAL_DOWN_KP_TXT: strcpy (file_name,"move_left_diagonal_down_kp.txt");
                                     break ;
                         
                             default : do_operation = 0 ;   
@@ -121,32 +119,32 @@ void run(){
                              
                         break ;
 
-            case 3:     switch(get_sorting_type()){
+            case CHOOSE_TO_SORT:     switch(get_sorting_type()){
 
-                            case 1:     switch(get_file_name_choise()){
+                            case SORT_BY_KPS:     switch(get_file_name_choise()){
 
-                                            case 1: strcpy (file_name,"move_forward_kp.txt");                    
+                                            case MOVE_FORWARD_KP_TXT : strcpy (file_name,"move_forward_kp.txt");                    
                                                     break ;
 
-                                            case 2: strcpy (file_name,"move_backward_kp.txt");                    
+                                            case MOVE_BACKWARD_KP_TXT: strcpy (file_name,"move_backward_kp.txt");                    
                                                     break ;
                                 
-                                            case 3: strcpy (file_name,"move_right_side_kp.txt");                    
+                                            case MOVE_RIGHT_SIDE_KP_TXT: strcpy (file_name,"move_right_side_kp.txt");                    
                                                     break ;
 
-                                            case 4: strcpy (file_name,"move_left_side_kp.txt");                    
+                                            case MOVE_LEFT_SIDE_KP_TXT: strcpy (file_name,"move_left_side_kp.txt");                    
                                                     break ;
 
-                                            case 5: strcpy (file_name,"move_right_diagonal_up_kp.txt");                    
+                                            case MOVE_RIGHT_DIAGONAL_UP_KP_TXT: strcpy (file_name,"move_right_diagonal_up_kp.txt");                    
                                                     break ;
 
-                                            case 6: strcpy (file_name,"move_right_diagonal_down_kp.txt");                    
+                                            case MOVE_RIGHT_DIAGONAL_DOWN_KP_TXT: strcpy (file_name,"move_right_diagonal_down_kp.txt");                    
                                                     break ;
 
-                                            case 7: strcpy (file_name,"move_left_diagonal_up_kp.txt");                    
+                                            case MOVE_LEFT_DIAGONAL_UP_KP_TXT: strcpy (file_name,"move_left_diagonal_up_kp.txt");                    
                                                     break ;
 
-                                            case 8: strcpy (file_name,"move_left_diagonal_down_kp.txt");                    
+                                            case MOVE_LEFT_DIAGONAL_DOWN_KP_TXT: strcpy (file_name,"move_left_diagonal_down_kp.txt");                    
                                                     break ;
 
                                             default : do_operation = 0 ;
@@ -175,30 +173,30 @@ void run(){
    
                                         break;
 
-                            case 2:     switch(get_file_name_choise()){
+                            case SORT_BY_DIFF:     switch(get_file_name_choise()){
 
-                                            case 1: strcpy (file_name,"move_forward_kp.txt");
+                                            case MOVE_FORWARD_KP_TXT: strcpy (file_name,"move_forward_kp.txt");
                                                      break ;
                                                     
-                                            case 2: strcpy (file_name,"move_backward_kp.txt");
+                                            case MOVE_BACKWARD_KP_TXT : strcpy (file_name,"move_backward_kp.txt");
                                                     break ;
                                 
-                                            case 3: strcpy (file_name,"move_right_side_kp.txt");
+                                            case MOVE_RIGHT_SIDE_KP_TXT: strcpy (file_name,"move_right_side_kp.txt");
                                                      break ;
 
-                                            case 4: strcpy (file_name,"move_left_side_kp.txt");
+                                            case MOVE_LEFT_SIDE_KP_TXT: strcpy (file_name,"move_left_side_kp.txt");
                                                      break ;
 
-                                            case 5: strcpy (file_name,"move_right_diagonal_up_kp.txt");
+                                            case MOVE_RIGHT_DIAGONAL_UP_KP_TXT: strcpy (file_name,"move_right_diagonal_up_kp.txt");
                                                      break ;
 
-                                            case 6: strcpy (file_name,"move_right_diagonal_down_kp.txt");
+                                            case MOVE_RIGHT_DIAGONAL_DOWN_KP_TXT: strcpy (file_name,"move_right_diagonal_down_kp.txt");
                                                      break ;
 
-                                            case 7: strcpy (file_name,"move_left_diagonal_up_kp.txt");
+                                            case MOVE_LEFT_DIAGONAL_UP_KP_TXT: strcpy (file_name,"move_left_diagonal_up_kp.txt");
                                                      break ;
 
-                                            case 8: strcpy (file_name,"move_left_diagonal_down_kp.txt");
+                                            case MOVE_LEFT_DIAGONAL_DOWN_KP_TXT: strcpy (file_name,"move_left_diagonal_down_kp.txt");
                                                      break ;
 
                                             default : do_operation = 0 ;
@@ -233,7 +231,7 @@ void run(){
                     
                         break ;
 
-            case 4:     choose_to_stay = 0 ;
+            case CHOOSE_TO_EXIT:     choose_to_stay = 0 ;
                         break ;
 
             default :   puts(ANSI_COLOR_RED Bold "ERROR in first switch block"ANSI_COLOR_RESET);

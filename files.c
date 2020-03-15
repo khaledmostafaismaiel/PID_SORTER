@@ -51,33 +51,33 @@ void get_last_sections_data(){
 
     char file_name[MAX_SIZE] ;
 
-    for(int i=1 ; i <=8 ; ++i){
+    for(int i=MOVE_FORWARD_KP_TXT ; i <=MOVE_LEFT_DIAGONAL_DOWN_KP_TXT ; ++i){
         
         switch(i){
 
-                case 1:     strcpy (file_name,"move_forward_kp.txt");
+                case MOVE_FORWARD_KP_TXT:     strcpy (file_name,"move_forward_kp.txt");
                         break ;
 
-                case 2:     strcpy (file_name,"move_backward_kp.txt");
+                case MOVE_BACKWARD_KP_TXT:     strcpy (file_name,"move_backward_kp.txt");
                         break ;
                 
-                case 3:     strcpy (file_name,"move_right_side_kp.txt");
+                case MOVE_RIGHT_SIDE_KP_TXT:     strcpy (file_name,"move_right_side_kp.txt");
                         break ;
 
-                case 4:     strcpy (file_name,"move_left_side_kp.txt");
+                case MOVE_LEFT_SIDE_KP_TXT:     strcpy (file_name,"move_left_side_kp.txt");
                         break ;
 
 
-                case 5:     strcpy (file_name,"move_right_diagonal_up_kp.txt");
+                case MOVE_RIGHT_DIAGONAL_UP_KP_TXT:     strcpy (file_name,"move_right_diagonal_up_kp.txt");
                         break ;
 
-                case 6:     strcpy (file_name,"move_right_diagonal_down_kp.txt");
+                case MOVE_RIGHT_DIAGONAL_DOWN_KP_TXT:     strcpy (file_name,"move_right_diagonal_down_kp.txt");
                         break ;
 
-                case 7:     strcpy (file_name,"move_left_diagonal_up_kp.txt");
+                case MOVE_LEFT_DIAGONAL_UP_KP_TXT:     strcpy (file_name,"move_left_diagonal_up_kp.txt");
                         break ;
 
-                case 8:     strcpy (file_name,"move_left_diagonal_down_kp.txt");
+                case MOVE_LEFT_DIAGONAL_DOWN_KP_TXT:     strcpy (file_name,"move_left_diagonal_down_kp.txt");
                         break ;
        
         }
@@ -94,7 +94,7 @@ int write_data_in_file(char *file_name,float kp,float gyro_start,float gyro_end)
 
     pointer_to_file = fopen(file_name,"r");
 
-    if (pointer_to_file != "NULL"){
+    if (pointer_to_file != NULL ){
 
       fclose(pointer_to_file);
 
@@ -120,7 +120,7 @@ int is_file_exist(char *file_name){
 
   pointer_to_file = fopen(file_name , "r");
 
-  if(pointer_to_file != "NULL"){
+  if(pointer_to_file != NULL){
     return 1 ;
   }else{
     return 0 ;
