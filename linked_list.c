@@ -5,16 +5,49 @@
 int get_data_from_user(char *file_name){
 
     char kp[MAX_SIZE];
-    puts("Please enter Kp");
-    scanf("%s",kp);
+    do{
+
+        puts("Please enter Kp");
+        scanf("%s",kp);
+
+        if(is_number(kp) == 0){
+            puts(ANSI_COLOR_RED Bold"\t\t\t\t\t INVALID CHOISE"ANSI_COLOR_RESET);
+
+        }
+
+    }while(is_number(kp) == 0);
+
 
     char gyro_start[MAX_SIZE];
-    puts("Please enter gyro_start");
-    scanf("%s",gyro_start);
+    do{
+
+        puts("Please enter gyro_start");
+        scanf("%s",gyro_start);
+
+        if(is_number(gyro_start) == 0){
+            puts(ANSI_COLOR_RED Bold"\t\t\t\t\t INVALID CHOISE"ANSI_COLOR_RESET);
+
+        }
+    }while(is_number(gyro_start) == 0);
+
+
 
     char gyro_end[MAX_SIZE];
-    puts("Please enter gyro_end");
-    scanf("%s",gyro_end);
+    do{
+
+        puts("Please enter gyro_end");
+        scanf("%s",gyro_end);
+
+        if(is_number(gyro_end) == 0){
+            puts(ANSI_COLOR_RED Bold"\t\t\t\t\t INVALID CHOISE"ANSI_COLOR_RESET);
+
+        }
+    }while(is_number(gyro_end) == 0);
+
+
+
+
+
 
     if(insertToLinkedList(file_name,atof(kp),atof(gyro_start),atof(gyro_end))){
 

@@ -89,13 +89,41 @@ int get_sorting_type(){
 
 int is_number(char *string){
 
-    for(int i=0 ;string[i] != NULL ; ++i){
-        if((string[i] <= 9 )) {
+    if(string_length(string) > operators_length(string)){
 
-        }else{
-            return 0 ;
+        for(int i=0 ;string[i] != NULL ; ++i){
+            if(((string[i] >= '0') && (string[i] <= '9')) || (string[i] == '+') || (string[i] == '-') || (string[i] == '*') || (string[i] == '/') ){
+
+            }else{
+                return 0 ;
+            }
+        }
+
+            return 1;
+
+    }else{
+
+        return 0;
+
+    }
+
+
+}
+
+int operators_length(char *string){
+    
+    int length = 0 ;
+
+    for(int i=0 ;string[i] != NULL ;++i ){
+        if((string[i] == '+') || (string[i] == '-') || (string[i] == '*') || (string[i] == '/')){
+            ++length ;
         }
     }
 
-    return 1;
+    return length ;
+}
+int string_length(char *string){
+
+    return strlen(string);
+
 }
